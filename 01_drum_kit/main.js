@@ -24,6 +24,6 @@ function playSound(letter){
   setTimeout(function(){
     box.style.transform = '';
     box.style.borderColor = 'black';
-  }, 100);
+  }, 200);
   sound.play();
 }
