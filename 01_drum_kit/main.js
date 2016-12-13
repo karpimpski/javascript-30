@@ -1,11 +1,8 @@
 var boxes = document.querySelectorAll('.box');
 
 window.addEventListener('keypress', function(e){
-  var letter = String.fromCharCode(e.which);
-  var id = '#' + letter + '_sound';
-
-  if(document.querySelector(id)){
-    playSound(letter);
+  if(document.querySelector('#' + e.key + '_sound')){
+    playSound(e.key);
   }
 });
 
@@ -19,11 +16,9 @@ function playSound(letter){
   var sound = document.querySelector('#' + letter + '_sound');
   var box = document.querySelector('#' + letter + '_box');
   sound.currentTime = 0;
-  box.style.transform = 'scale(1.1)';
-  box.style.borderColor = '#FFC600';
+  box.classList.add('playing');
   setTimeout(function(){
-    box.style.transform = '';
-    box.style.borderColor = 'black';
-  }, 200);
+    box.classList.remove('playing');
+  }, 300);
   sound.play();
 }
