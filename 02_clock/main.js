@@ -13,7 +13,7 @@ var time = new Date();
 minute.style.transform = `rotate(${time.getMinutes() * 6}deg)`;
 hour.style.transform = `rotate(${(time.getHours() + time.getMinutes()/60) * 30}deg)`;
 
-hourD.innerHTML = time.getHours() % 12;
+time.getHours() % 12 == 0 ? hourD.innerHTML = '12' : hourD.innerHTML = time.getHours() % 12;
 minuteD.innerHTML = time.getMinutes();
 setInterval(setTime, 1000);
 
@@ -22,6 +22,10 @@ function setTime(){
     if(time.getSeconds() == 0){
         newMinute();
         secondD.innerHTML = '00';
+    }
+    else if(time.getSeconds() < 10){
+        second.style.transform = `rotate(${time.getSeconds() * 6 }deg)`;
+        secondD.innerHTML = '0' + time.getSeconds().toString();   
     }
     else{
         second.style.transform = `rotate(${time.getSeconds() * 6 }deg)`;
@@ -34,9 +38,8 @@ function newMinute(){
     var hours = (time.getHours() + time.getMinutes()/60) * 30;
     time.getMinutes() == 0 ? fullCircle(minute) : minute.style.transform = `rotate(${time.getMinutes() * 6}deg)`;
     time.getHours() == 0 ? fullCircle(hour) : hour.style.transform = `rotate(${hours}deg)`;
-    secondD.innerHTML = '00';
-    hourD.innerHTML = time.getHours() % 12;
-    minuteD.innerHTML = time.getMinutes();
+    time.getHours() % 12 == 0 ? hourD.innerHTML = '12' : hourD.innerHTML = time.getHours() % 12;
+    time.getMinutes() < 10 ? minuteD.innerHTML = '0' + time.getMinutes().toString() : minuteD.innerHTML = time.getMinutes();
 }
 
 function fullCircle(el){
