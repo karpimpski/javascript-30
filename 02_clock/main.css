@@ -71,6 +71,9 @@ body{
     transition: all 2s;
     width: 50%;
     height: 100%;
+    line-height: 200px;
+    text-align: center;
+    font-size: 3em;
 }
 
 #hour_d, #minute_d{
