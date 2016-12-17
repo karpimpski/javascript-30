@@ -1,0 +1,29 @@
+:root {
+  --color: #FFC600;
+  --spacing: 10px;
+  --blur: 10px;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  background: #193549;
+  color: white;
+  font-family: sans-serif;
+}
+
+.colored{
+  color: var(--color);
+}
+
+img{
+  border: var(--spacing) solid var(--color);
+  filter: blur(var(--blur));
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
