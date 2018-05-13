@@ -8,8 +8,9 @@ var hourD = document.querySelector('#hour_d');
 var minuteD = document.querySelector('#minute_d');
 var secondD = document.querySelector('#second_d');
 
+var time;
+
 setTime();
-var time = new Date();
 minute.style.transform = `rotate(${time.getMinutes() * 6}deg)`;
 hour.style.transform = `rotate(${(time.getHours() + time.getMinutes()/60) * 30}deg)`;
 
@@ -61,45 +62,9 @@ clock.addEventListener('click', function(){
 function makeDigital(){
     clock.classList.remove('analog');
     clock.classList.add('digital');
-    clock.style.borderRadius = '20px';
-    clock.style.height = '200px';
-    [center, second, hour, minute].forEach(function(item, index){
-        item.style.display = 'none';
-    });
-    
-    [hourD, minuteD, secondD].forEach(function(item, index){
-        setTimeout(function(){
-            item.style.opacity = '0';
-            item.style.display = 'block'; 
-            setTimeout(function(){
-                item.style.opacity = '1';
-            }, 200);
-        }, 200);
-    });
 }
 
 function makeAnalog(){
     clock.classList.remove('digital');
     clock.classList.add('analog');
-    clock.style.borderRadius = '100%';
-    clock.style.height = '400px';
-    setTimeout(function(){
-        [center, second, hour, minute].forEach(function(item, index){
-            item.style.display = 'block';
-            item.style.opacity = '0';
-            setTimeout(function(){
-                item.style.opacity = '1';
-            }, 200);
-        });
-    }, 200);
-    
-    [hourD, minuteD, secondD].forEach(function(item, index){
-        setTimeout(function(){
-            item.style.display = 'none'; 
-            setTimeout(function(){
-                item.style.opacity = '0';
-                item.style.display = 'none';
-            }, 200);
-        }, 200);
-    });
 }

@@ -1,3 +1,9 @@
+:root {
+    --clock-border-color: #1B8BEF;
+    --second-hand-color: red;
+    --digital-font-color: black;
+}
+
 body{
     padding: 0;
     margin: 0;
@@ -5,41 +11,60 @@ body{
     justify-content: center;
     align-items: center;
     height: 100%;
-    background: white;
-    font-family: 'Orbitron';
-    color: red;
+    font-family: 'Inconsolata', monospace;
+    color: var(--digital-font-color);
 }
 
 #clock{
-    padding: 0;
-    margin: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 400px;
-    height: 400px;
-    border: 15px solid #1B8BEF;
-    border-radius: 100%;
+    border: 15px solid var(--clock-border-color);
     transition: all 1s;
+    width: 400px;
 }
 
-#hour, #minute, #second{
+#clock.analog {
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    border-radius: 100%;
+}
+
+#clock.digital {
+    border-radius: 20px;
+    height: 200px;
+}
+
+#clock:hover{
+    cursor: pointer;
+}
+
+#hour, #minute, #second {
+    display: none;
     transform-origin: bottom;
     position: absolute;
     right: 50%;
     bottom: 50%;
-    z-index: -100000000;
+    z-index: -1;
     border-radius: 20px;
     transition: all 0.2s;
 }
 
+.analog #hour, .analog #minute, .analog #second {
+    display: block;
+}
+
 #center{
+    display: none;
     width: 15px;
     height: 15px;
     background: white;
     border: 5px solid #494949;
     border-radius: 100%;
     transition: all 0.2s;
+}
+
+.analog #center {
+    display: block;
 }
 
 #hour{
@@ -59,23 +84,26 @@ body{
 #second{
     width: 2px;
     height: 200px;
-    background: red;
+    background: var(--second-hand-color);
     transition: all 0.2s;
     animation-direction: alternate;
 }
 
-#clock:hover{
-    cursor: pointer;
-}
-
 #hour_d, #minute_d, #second_d{
+    opacity: 0;
     display: none;
-    transition: all 2s;
     width: 50%;
     height: 100%;
     line-height: 200px;
     text-align: center;
     font-size: 3em;
+    transition-delay: 2s;
+    transition: all 0.2s;
+}
+
+.digital #hour_d, .digital #minute_d, .digital #second_d {
+    display: block;
+    opacity: 1;
 }
 
 #hour_d, #minute_d{
