@@ -31,11 +31,6 @@ function updateDigital() {
     hourD.innerHTML = format(time.getHours());
 }
 
-function format(value) {
-    if(value < 10) return "0" + value.toString();
-    return value.toString();
-}
-
 function fullCircle(el){
     el.style.transform = `rotate(360deg)`;
     setTimeout(function(){
@@ -48,16 +43,13 @@ function fullCircle(el){
     }, 250);
 }
 
-clock.addEventListener('click', function(){
-    this.classList.contains('analog') ? makeDigital() : makeAnalog();
-});
-
-function makeDigital(){
-    clock.classList.remove('analog');
-    clock.classList.add('digital');
+function format(value) {
+    if(value < 10) return "0" + value.toString();
+    return value.toString();
 }
 
-function makeAnalog(){
-    clock.classList.remove('digital');
-    clock.classList.add('analog');
+clock.addEventListener('click', toggleClock);
+
+function toggleClock() {
+    clock.classList.contains('analog') ? clock.classList.replace('analog', 'digital') : clock.classList.replace('digital', 'analog');
 }
