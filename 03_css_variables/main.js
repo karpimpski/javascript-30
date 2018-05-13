@@ -1,9 +1,18 @@
-addListener('spacing', 'px');
-addListener('blur', 'px');
-addListener('color', '');
+var body = document.getElementsByTagName("body")[0];
 
-function addListener(name, unit){
-  document.getElementsByName(name)[0].addEventListener('input', function(){
-    document.querySelector('body').style.setProperty('--' + name, document.getElementsByName(name)[0].value + unit);
+linkCss(document.getElementById('spacing_input'), 'spacing', 'px');
+linkCss(document.getElementById('blur_input'), 'blur', 'px');
+linkCss(document.getElementById('color_input'), 'color', '');
+
+/**
+ * Links
+ * @param {Object} element - HTML element to link
+ * @param {String} cssVariable - name of CSS variable to link
+ * @param {String} unit - optional. CSS shorthand for the unit of measurement, such as 'px'
+ */
+function linkCss(element, cssVariable, unit = ''){
+  console.log(typeof element);
+  element.addEventListener('input', function(){
+    body.style.setProperty('--' + cssVariable, element.value + unit);
   });
 }
