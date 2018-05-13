@@ -20,9 +20,16 @@ function updateClock(){
 }
 
 function updateAnalog() {
-    time.getSeconds() == 0 ? fullCircle(second) : second.style.transform = `rotate(${time.getSeconds() * 6 }deg)`;
-    time.getMinutes() == 0 ? fullCircle(minute) : minute.style.transform = `rotate(${time.getMinutes() * 6}deg)`;
-    time.getHours() == 0 ? fullCircle(hour) : hour.style.transform = `rotate(${(time.getHours() + time.getMinutes()/60) * 30}deg)`;
+    if(time.getSeconds() == 0) {
+        fullCircle(second);
+        time.getMinutes() == 0 ? fullCircle(minute) : minute.style.transform = `rotate(${time.getMinutes() * 6}deg)`;
+        time.getHours() == 0 ? fullCircle(hour) : hour.style.transform = `rotate(${(time.getHours() + time.getMinutes()/60) * 30}deg)`;
+    }
+    else {
+        second.style.transform = `rotate(${time.getSeconds() * 6 }deg)`;
+        minute.style.transform = `rotate(${time.getMinutes() * 6}deg)`;
+        hour.style.transform = `rotate(${(time.getHours() + time.getMinutes()/60) * 30}deg)`;
+    }
 }
 
 function updateDigital() {
