@@ -1,0 +1,112 @@
+:root {
+  --clock-border-color: #1b8bef;
+  --clock-hand-color: #494949;
+  --second-hand-color: red;
+  --digital-font-color: black;
+  --background-color: white;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--background-color);
+  font-family: "Inconsolata", monospace;
+}
+
+#clock {
+  height: 400px;
+  width: 400px;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  border: 15px solid var(--clock-border-color);
+  transition: all 1s;
+}
+
+#clock.analog {
+  height: 400px;
+  border-radius: 100%;
+}
+
+#clock.digital {
+  border-radius: 20px;
+  height: 200px;
+  display: flex;
+}
+
+#clock:hover {
+  cursor: pointer;
+}
+
+#hour, #minute, #second {
+  display: none;
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+  z-index: -1;
+  border-radius: 20px;
+  transform-origin: bottom;
+  transition: all 0.2s;
+}
+
+.analog #hour, .analog #minute, .analog #second {
+  display: block;
+}
+
+#center {
+  display: none;
+  width: 15px;
+  height: 15px;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: var(--background-color);
+  border: 5px solid var(--clock-hand-color);
+  border-radius: 100%;
+  transition: all 0.2s;
+}
+
+.analog #center {
+  display: block;
+}
+
+#hour {
+  width: 5px;
+  height: 150px;
+  background: var(--clock-hand-color);
+  transition: all 0.2s;
+}
+
+#minute {
+  width: 5px;
+  height: 190px;
+  background: var(--clock-hand-color);
+  transition: all 0.2s;
+}
+
+#second {
+  width: 2px;
+  height: 200px;
+  background: var(--second-hand-color);
+  transition: all 0.2s;
+}
+
+#hour_d, #minute_d, #second_d {
+  display: none;
+  opacity: 0;
+  width: calc(100% / 3);
+  height: 100%;
+  line-height: 200px;
+  text-align: center;
+  font-size: 3em;
+  transition: all 0.2s;
+}
+
+.digital #hour_d, .digital #minute_d, .digital #second_d {
+  display: block;
+  opacity: 1;
+}
+
+#hour_d, #minute_d {
+  border-right: 1px solid black;
+}
