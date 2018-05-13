@@ -1,9 +1,9 @@
 :root {
-  --clock-border-color: #1b8bef;
-  --clock-hand-color: #494949;
-  --second-hand-color: red;
-  --digital-font-color: black;
-  --background-color: white;
+  --clock-border-color: #4056A1;
+  --clock-hand-color: #EFE1BA;
+  --second-hand-color: #F13C1F;
+  --digital-font-color: #EFE1BA;
+  --background-color: #1A1A1C;
 }
 
 body {
@@ -21,6 +21,7 @@ body {
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
   border: 15px solid var(--clock-border-color);
+  color: var(--digital-font-color);
   transition: all 1s;
 }
 
@@ -111,5 +112,5 @@ body {
 }
 
 #hour_d, #minute_d {
-  border-right: 1px solid black;
+  border-right: 1px solid var(--digital-font-color);
 }
