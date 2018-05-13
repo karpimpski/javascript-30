@@ -1,5 +1,6 @@
 :root {
     --clock-border-color: #1B8BEF;
+    --clock-hand-color: #494949;
     --second-hand-color: red;
     --digital-font-color: black;
 }
@@ -58,7 +59,7 @@ body{
     width: 15px;
     height: 15px;
     background: white;
-    border: 5px solid #494949;
+    border: 5px solid var(--clock-hand-color);
     border-radius: 100%;
     transition: all 0.2s;
 }
@@ -70,14 +71,14 @@ body{
 #hour{
     width: 5px;
     height: 150px;
-    background: #494949;
+    background: var(--clock-hand-color);
     transition: all 0.2s;
 }
 
 #minute{
     width: 5px;
     height: 190px;
-    background: #494949;
+    background: var(--clock-hand-color);
     transition: all 0.2s;
 }
 

@@ -10,16 +10,16 @@ var secondD = document.querySelector('#second_d');
 
 var time;
 
-setTime();
-setInterval(setTime, 1000);
+updateClock();
+setInterval(updateClock, 1000);
 
-function setTime(){
+function updateClock(){
     time = new Date();
-    rotateHands();
+    updateAnalog();
     updateDigital();
 }
 
-function rotateHands() {
+function updateAnalog() {
     time.getSeconds() == 0 ? fullCircle(second) : second.style.transform = `rotate(${time.getSeconds() * 6 }deg)`;
     time.getMinutes() == 0 ? fullCircle(minute) : minute.style.transform = `rotate(${time.getMinutes() * 6}deg)`;
     time.getHours() == 0 ? fullCircle(hour) : hour.style.transform = `rotate(${(time.getHours() + time.getMinutes()/60) * 30}deg)`;
@@ -31,6 +31,10 @@ function updateDigital() {
     hourD.innerHTML = format(time.getHours());
 }
 
+/**
+ * Rotates an HTML element to 360 degrees, then resets its rotation to 0.
+ * @param {Object} el - element to rotate.
+ */
 function fullCircle(el){
     el.style.transform = `rotate(360deg)`;
     setTimeout(function(){
@@ -43,6 +47,10 @@ function fullCircle(el){
     }, 250);
 }
 
+/**
+ * Formats an integer to 2 digits.
+ * @param {Int} value - number to format.
+ */
 function format(value) {
     if(value < 10) return "0" + value.toString();
     return value.toString();
