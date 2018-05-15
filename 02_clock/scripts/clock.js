@@ -66,5 +66,5 @@ function format(value) {
 clock.addEventListener('click', toggleClock);
 
 function toggleClock() {
-    clock.classList.contains('analog') ? clock.classList.replace('analog', 'digital') : clock.classList.replace('digital', 'analog');
+    clock.classList.contains('analog') ? clock.classList = 'digital' : clock.classList = 'analog';
 }
